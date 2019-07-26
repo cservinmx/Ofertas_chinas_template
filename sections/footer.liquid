@@ -1,0 +1,442 @@
+
+{% assign design_link = 'https://servin.mx/' %}
+<footer class="site-footer" role="contentinfo">
+  <div style="height: 20px;"></div>
+  <div style="color: #FFF;">  	
+      <div class="footerfloats" style="padding-left:20px;"> 		      
+        <h4 class="footer_title">¿Que hacemos?</h4>
+        <div class="toggle_content">
+          <ul>
+            <li><a href="#">Asesoria</a></li>
+            <li><a href="#">SEO</a></li>
+            <li><a href="#">Tienda Online</a></li>
+            <li><a href="#">Consultoria</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footerfloats">
+      	<h4 class="footer_title">Contáctanos</h4>
+        <div class="toggle_content">
+          <ul>           
+             
+            <li>Email: 
+             	{% if section.settings.header_strip_text_email  != blank  %}
+
+                {{ section.settings.header_strip_text_email }}
+
+                {% endif %}
+             </li> 
+            
+          </ul>
+        </div>
+      </div>
+      <div class="footerfloats" style="width: 15%;">
+      	<h4 class="footer_title">Síguenos</h4>
+        <div class="toggle_content">
+          <ul>
+            <li><a href="https://www.instagram.com/p/B0U5GeIF34C/?igshid=1i9rk0slc22yg" target="_blank"><img alt="Sígueme en Facebook" height="35" width="35" src="https://image.flaticon.com/icons/png/512/174/174855.png" title="Sígueme en Instagram"/></a></li>
+            <li><a href="https://www.facebook.com/Ofertas-Chinas-654424368357973/" target="_blank"><img alt="Sígueme en Facebook" height="35" width="35" src="https://2.bp.blogspot.com/-28mh2hZK3HE/XCrIxxSCW0I/AAAAAAAAH_M/XniFGT5c2lsaVNgf7UTbPufVmIkBPnWQQCLcBGAs/s1600/facebook.png"  title="Sígueme en Facebook"/></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footerfloats" id="ftsuscribe" style="width: 25%;">
+        <h4 class="footer_title">Suscríbete</h4>
+    	<form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form" target="_blank">              
+              <div class="input-group">
+                <input type="email" id="Email" class="input-group__field newsletter__input" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                <span class="input-group__btn">
+                  <button type="submit" class="btn newsletter__submit" name="subscribe" id="Subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+                    <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                  </button>
+                </span>                
+              </div>
+            </form>
+      </div>
+      <div class="footerfloats" style="padding-left: 10px;">
+    	<h4 class="footer_title">MÁS</h4>
+        <div class="toggle_content">
+          <ul>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Accesabilidad</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+           
+          </ul>
+        </div>
+      </div>
+{% assign social_media_column = section.settings.social_media_column | plus: 0  %}
+
+          {% if block.settings.social_icons_footer %}
+            {% assign social_icons = true %}
+            <div class="footer-social-icons">
+              {% include 'social-icons' %}
+            </div>
+          {% endif %}
+  </div>
+  
+  <div class="page-width">    
+   
+    <div class="grid">
+    <div class="grid__item medium-up--one-whole footer_credits">
+        <p class="credits">
+          &copy; {{ "now" | date: "%Y" }} 
+          {% if section.settings.shop_name != blank %}
+          <a href="/">{{ section.settings.shop_name }}</a>
+          {% else %}
+           {{ shop.name | link_to: '/' }}
+          {% endif %}
+
+          <a href='{{ design_link }}'>{{ 'general.copyright_credit.designer_credits_html' | t }}</a>
+          
+          {% if section.settings.display_shopify_by %} &
+          <a rel="nofollow" href="https://www.shopify.in/?ref=limitless-theme&utm_campaign=footer-link" target="_blank">Powered by shopify</a>.
+          {% endif %}
+        </p>
+
+        {% if section.settings.display_payment_methods %}
+        <div class="site-footer__payment-icons site-footer__payment-icons--right">
+          <ul class="payment-icons list--inline">
+            {% if section.settings.pay_discover %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'discover' | replace: '_',' '}}">
+                {% include 'icon-discover' %}
+                <span class="fallback-text">{{ 'discover' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_diners_club %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'diners_club' | replace: '_',' '}}">
+                {% include 'icon-diners_club' %}
+                <span class="fallback-text">{{ 'diners_club' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_american_express %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'american_express' | replace: '_',' '}}">
+                {% include 'icon-american_express' %}
+                <span class="fallback-text">{{ 'american_express' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_paypal %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'paypal' | replace: '_',' '}}">
+                {% include 'icon-paypal' %}
+                <span class="fallback-text">{{ 'paypal' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_master %}   
+            <li>
+              <span class="icon-fallback-text">
+                {% include 'icon-master' %}
+                <span class="fallback-text">{{ 'master' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+            {% if section.settings.pay_visa %}   
+            <li>
+              <span class="icon-fallback-text" title="{{ 'visa' | replace: '_',' '}}">
+                {% include 'icon-visa' %}
+                <span class="fallback-text">{{ 'visa' | replace: '_',' '}}</span>
+              </span>
+            </li>
+            {% endif %}
+
+          </ul>		
+        </div>
+      
+        {% endif %}
+      </div>
+    </div><!--end footer_credits-->
+  </div>
+</footer>
+
+{% schema %}
+
+{
+  "name": "Footer",
+  "class": "footer-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer [NEED HELP?](https:\/\/help.boostertheme.com\/hc/en-us\/articles\/360002081334-How-to-setup-the-Footer-in-Booster-2-0)"
+    },
+    {
+      "type": "text",
+      "id": "shop_name",
+      "label": "Shop Name"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_shopify_by",
+      "label": "Show theme powered by shopify",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_payment_methods",
+      "label": "Show payment method icons",
+      "default": true
+    },
+	{
+      "type": "header",
+      "content": "Payment icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_visa",
+      "label": "Show Visa",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_master",
+      "label": "Show Mastercard",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_american_express",
+      "label": "Show American Express",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_paypal",
+      "label": "Show PayPal",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_diners_club",
+      "label": "Show Diners Club",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "header_strip_text_contact",
+      "label": "Phone Number",
+      "default": "044-4444-4444"
+    },
+	{
+      "type": "text",
+      "id": "header_strip_text_email",
+      "label": "Support Email",
+      "default" : "contacto@ofertaschinas.store"
+    },
+    {
+      "type": "checkbox",
+      "id": "pay_discover",
+      "label": "Show Discover",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Desktop Logo"
+        },
+        {
+          "type": "select",
+          "id": "desktop_logo_size",
+          "label": "Logo size in %",
+          "options": [
+            {
+              "value": "30%",
+              "label": "30"
+            },
+            {
+              "value": "35%",
+              "label": "35"
+            },
+            {
+              "value": "50%",
+              "label": "50"
+            },
+            {
+              "value": "60%",
+              "label": "60"
+            },
+            {
+              "value": "70%",
+              "label": "70"
+            },
+            {
+              "value": "75%",
+              "label": "75"
+            },
+            {
+              "value": "90%",
+              "label": "90"
+            },
+            {
+              "value": "100%",
+              "label": "100"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+  		  "default": "footer"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+	{
+      "type": "customer_shopify",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      	},
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+		{
+          "type": "checkbox",
+          "id": "logo_footer",
+          "label": "Enable logo",
+          "default": false
+        },
+		{
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Desktop Logo"
+        },
+        {
+          "type": "select",
+          "id": "desktop_logo_size",
+          "label": "Logo size in %",
+          "options": [
+            {
+              "value": "30%",
+              "label": "30"
+            },
+            {
+              "value": "35%",
+              "label": "35"
+            },
+            {
+              "value": "50%",
+              "label": "50"
+            },
+            {
+              "value": "60%",
+              "label": "60"
+            },
+            {
+              "value": "70%",
+              "label": "70"
+            },
+            {
+              "value": "75%",
+              "label": "75"
+            },
+            {
+              "value": "90%",
+              "label": "90"
+            },
+            {
+              "value": "100%",
+              "label": "100"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },    	
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "empty",
+      "name": "Empty column",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "logo"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+
+{% endschema %}
+
+
+
+
